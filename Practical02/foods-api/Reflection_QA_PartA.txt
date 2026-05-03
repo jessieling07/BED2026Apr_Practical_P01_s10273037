@@ -1,0 +1,25 @@
+What did you learn about REST APIs?
+
+I realised that my foods variable is managed by my API 
+"/foods/:id" a specific food item of mine is accessed
+"/foods" accesses the entire collection
+
+How did you understand the use of HTTP methods (GET, POST, PUT, DELETE)?
+
+i realised that the methods i already have an understanding of it but when i actually built it myself i understood how each method maps to a specific action instead of creating separate URLS
+
+Did you face any challenges while building the CRUD operations?
+
+no. crud operation is quite straightforward and simple so things went smoothly for me.
+
+
+Q&A:
+
+a. Why use POST for creating resources and PUT for updating?
+
+POST because a new resource is added and an id is assigned
+PUT because a specific resource is targeted by its ID in the URL
+
+b. What status code should be returned when attempting to update a non-existent resource?
+
+404 as the updated resource doesnt exist

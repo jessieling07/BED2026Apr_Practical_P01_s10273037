@@ -1,0 +1,38 @@
+
+
+Foods API Report
+================
+
+1. Role of Key Elements
+-----------------------
+
+app.use(express.json())
+Middleware that parses incoming request bodies from JSON into a JavaScript object so the code can read it.
+
+req.body
+Contains data sent from the client. Used in POST and PUT routes to get values like name and calories.
+
+req.query
+Holds URL query parameters. Used in the GET /foods route to filter results by name, e.g. /foods?name=rice.
+
+req.params.id
+Holds the dynamic ID from the URL path. Used in PUT and DELETE to identify which specific food to update or delete, e.g. /foods/123.
+
+
+2. HTTP Methods and CRUD Operations
+------------------------------------
+
+GET    - Read: retrieves the food list
+POST   - Create: adds a new food
+PUT    - Update: modifies an existing food by ID
+DELETE - Delete: removes a food by ID
+
+
+3. HTTP Status Codes
+---------------------
+
+200 OK                 - Request was successful
+201 Created            - Resource was successfully created
+400 Bad Request        - Invalid or missing data sent by the client
+404 Not Found          - Requested resource does not exist
+500 Internal Server    - Error Something went wrong on the server side
