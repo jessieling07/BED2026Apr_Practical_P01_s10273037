@@ -1,0 +1,2 @@
+ Personally, I feel that it is difficult for me to read as the codes are way too wordy for me and it gets messy 
+  I faced a lot of authentication issues and security issues. having to adjust the ports and use services.msc multiple times
