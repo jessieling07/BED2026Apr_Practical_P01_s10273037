@@ -1,0 +1,38 @@
+Task 1: Reflection on Refactoring
+Reflect on the process of refactoring the API code into the MVC structure by answering the following questions:
+
+
+What were the main changes you made to refactor the code into MVC architecture? Describe how you moved code between files and folders.
+- I made changes to the database queries, request handling, routing, etc that was inside of app.js. I had to split into three different folders 
+
+What challenges did you face during the refactoring process?
+-I had difficulties managing the require() path correctly as i got the relative imports between files wrong and it was hard for me to debug. i didnt get how the controller and modelling worked.
+
+How does the MVC structure change the way you think about adding new features or modifying existing ones compared to the previous non-MVC structure?
+-It makes the procedure mechanical, writing the handler in the controller and addign the route in app.js and optionally adding validation middleware.
+
+In what specific ways do you think the MVC version is more organized or easier to understand and maintain than the previous version where all logic was in app.js?
+-files are smaller aand more focused as studentModel.js only contains database logic and controller changes the response format.
+
+Explain how separating concerns (putting database logic in the Model and request handling in the Controller) makes the code better from a development perspective.
+-it enables development and testing. the model is tested by calling its functions directly with mock data. and changes the databasae schema.
+
+Task 2: Reflecting on Robustness & Security
+Reflect on the impact of validation, error handling, and parameterized queries by answering the following questions:
+
+How does implementing input validation middleware make the API more reliable and user-friendly? Provide an example of invalid input that your validation would now handle.
+-Without validation, bad data gets to the database and error comes back in raw cryptic databasse message. Validation middleware intercepts the request early and returns error immediately.
+For example, if someone sends POST /students with { "name": "A", "email": "notanemail" }, the Joi schema catches both issues at once and responds with "Name must be at least 2 characters long, Email must be a valid email address"
+which is a 400 response
+
+Explain in your own words how parameterized queries prevent SQL injection attacks. Why is this approach fundamentally more secure than building SQL query strings by concatenating variable data?
+- When building a query by concatenating strings like "SELECT * FROM Students WHERE id = " + req.params.id, the db will receive user input as raw SQL and execute it. 
+An attacker can pass and get every row and destroy the data but parameterized queries work differently as the query structure is sent to the database separately from the data.
+
+Consider a potential security risk for an API (other than SQL injection, e.g., brute-force attacks, exposing sensitive data in responses). How might robust error handling (like not showing detailed error messages to the client) help mitigate such a risk?
+-Detailed error messages are an information leak. If the server crashes and sends back a stack trace or a raw database error like "Invalid column name 'passwordHash'", 
+an attacker now knows your schema. If a failed login returns "User not found" versus "Wrong password", they can enumerate valid usernames.
+
+
+
+
